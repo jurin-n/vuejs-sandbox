@@ -7,17 +7,9 @@
 <body>
     <div id="app">
         <p>
-            {{ message }}
+            {{ items[1].name }}
         </p>
     </div>
 
-    <script>
-        console.assert(typeof Vue !== 'undefined');
-        new Vue({
-            el: '#app' ,
-            data: {
-                message: 'こんにちは！'
-            }
-        });
-    </script>
+    <script src="app.js"></script>
 </body>
