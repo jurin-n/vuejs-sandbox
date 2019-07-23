@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<title>初めてのVue.js</title>
-<script src="https://unpkg.com/vue@2.5.17"></script>
+<head>
+    <meta charset="utf-8"/>
+    <title>初めてのVue.js</title>
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+<body>
+    <div id="app">
+        <p>
+            {{ message }}
+        </p>
+    </div>
 
-<div id="app">
-    <p>
-        {{ message }}
-    </p>
-</div>
-
-<script>
-    console.assert(typeof Vue !== 'undefined');
-    new Vue({
-        el: '#app' ,
-        data: {
-            message: 'こんにちは！'
-        }
-    });
-</script>
+    <script>
+        console.assert(typeof Vue !== 'undefined');
+        new Vue({
+            el: '#app' ,
+            data: {
+                message: 'こんにちは！'
+            }
+        });
+    </script>
+</body>
