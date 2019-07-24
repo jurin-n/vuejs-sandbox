@@ -7,9 +7,12 @@
 <body>
     <div id="app">
         <p>
-            {{ items[1].name }}
+            {{ items[0].name }}
             :
-            {{ items[1].price * items[1].quantity }}
+            {{ items[0].price }} x {{ items[0].quantity }}
+        </p>
+        <p>
+            フィルター処理例 {{ items[0].price | numberWithDelimiter }}
         </p>
         <button id="b-button" v-bind:title="loggedInButton" v-bind:disabled="!canBuy">
             購入
