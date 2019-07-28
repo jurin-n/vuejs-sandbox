@@ -1,0 +1,44 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>Vue Routerを試す</title>
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1"></script>
+
+</head>
+<body>
+    <div id="app">
+        <div>
+            <router-link to="/top">
+                トップページ
+            </router-link>
+        </div>
+        <div>
+            <router-link to="users">
+                ユーザー一覧ページ
+            </router-link>
+        </div>
+        <router-view></router-view>
+    </div>
+    <script>
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: '/top',
+                    component: {
+                        template: '<div>トップページです🎉</div>'
+                    }
+                },
+                {
+                    path: '/users',
+                    component: {
+                        template: '<div>ユーザー一覧ページです🦀</div>'
+                    }
+                }
+            ]
+        })
+
+        var app = new Vue({
+            router: router
+        }).$mount('#app')
+    </script>
+</body>
