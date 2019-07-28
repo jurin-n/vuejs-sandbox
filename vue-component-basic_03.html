@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <title>コンポーネントを試す</title>
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+<body>
+    <div id="login-example">
+        <user-login></user-login>
+    </div>
+
+    <!-- テンプレート -->
+    <script type="text/x-template" id="login-template">
+        <div id="login-template">
+            <div>
+                <input type="text" placeholder="ログインID" v-model="userid">
+            </div>
+            <div>
+                <input type="password" placeholder="パスワード" v-model="password">
+            </div>
+            <button v-on:click="login">ログイン</button>
+        </div>
+    </script>
+
+    <!-- コンポーネント定義 -->
+    <script>
+        Vue.component('user-login',{
+            template: '#login-template',
+            data: function () {
+                return {
+                    userid: '',
+                    password: ''
+                }
+            },
+            methods: {
+                login: function () {
+                    auth.login(this.userid, this.password)
+                }
+            }
+        })
+
+        //ログインのダミー処理
+        var auth = {
+            login: function(id, password){
+                alert("userid:" + id + "\n" + "password:" + password)
+            }
+        }
+        
+        new Vue({
+            el: "#login-example"
+        })
+    </script>
+</body>
