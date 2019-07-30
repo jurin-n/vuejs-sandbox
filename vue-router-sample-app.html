@@ -18,12 +18,64 @@
     </div>
     <!-- コンポーネントのテンプレート定義 -->
     <script type="text/x-template" id="user-list">
-        <div>ユーザー一覧ページです。</div>
+        <div>
+            <div class="loading" v-if="loading">
+                読み込み中...
+            </div>
+            <div class="error" v-if="error">
+                {{ error }}
+            </div>
+            <div v-for="user in users" v-bind:key="user.id">
+                <h2>{{ user.name }}</h2>
+            </div>
+        </div>
     </script>
 
     <script>
+        //疑似的にWeb API経由で情報を取得したようにする。
+        var getUsers = function (callback) {
+            setTimeout(function () {
+                callback(null, [
+                    {
+                        id: 1,
+                        name: 'Yamada Taro'
+                    },
+                    {
+                        id: 2,
+                        name: 'Suzuki Jiro'
+                    }
+                ])
+            }, 1000)
+        }
+
         var UserList = {
-            template: '#user-list'
+            template: '#user-list',
+            data: function () {
+                return {
+                    loading: false,
+                    users: function () {return []},
+                    error: null
+                }
+            },
+            created: function () {
+                this.fetchData()
+            },
+            watch: {
+                '$route': 'fetchData'
+            },
+            methods: {
+                fetchData: function () {
+                    this.loading = true
+                    getUsers((function (err, users){
+                        this.loading = false
+                        if (err) {
+                            this.error = err.toString()
+                        } else {
+                            this.users = users
+                        }
+                    }).bind(this))
+                }
+            }
         }
 
         var router = new VueRouter({
