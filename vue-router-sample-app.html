@@ -44,6 +44,27 @@
             </div>
         </div>
     </script>
+    <script type="text/x-template" id="user-create">
+        <div>
+            <div class="sending" v-if="sending">
+                送信中...
+            </div>
+            <div>
+                <label>名前：</label>
+                <input type="text" v-model="user.name">
+            </div>
+            <div>
+                <label>説明文：</label>
+                <textarea v-model="user.description"></textarea>
+            </div>
+            <div v-if="error" class="error">
+                {{ error }}
+            </div>
+            <div>
+                <input type="button" v-on:click="createUser" value="送信">
+            </div>
+        </div>
+    </script>
     <script>
         //疑似的にWeb API経由で情報を取得したようにする。
         var userData = [
@@ -133,6 +154,57 @@
             }
         }
 
+        var postUser = function (params, callback) {
+            setTimeout(function () {
+                params.id = userData.length + 1
+                userData.push(params)
+                callback(null, params)
+            }, 1000)
+        }
+
+        var UserCreate = {
+            template: '#user-create',
+            data: function () {
+                return {
+                    sending: false,
+                    user: this.defaultUser(),
+                    error: null
+                }
+            },
+            created: function () {
+
+            },
+            methods: {
+                defaultUser: function () {
+                    return {
+                        name: '',
+                        description: ''
+                    }
+                },
+                createUser: function () {
+                    if (this.user.name.trim() === '') {
+                        this.error = '名前は必ず入力してください。'
+                        return
+                    }
+                    if (this.user.description.trim() === '') {
+                        this.error = '説明文は必ず入力してください。'
+                        return
+                    }
+                    postUser(this.user, (function (err, user) {
+                        this.sending = false
+                        if (err) {
+                            this.error = err.toString()
+                        } else {
+                            this.error = null
+                            this.user = this.defaultUser()
+                            alert('新規ユーザが登録されました。')
+                            this.$router.push('/users')
+                        }
+                    }).bind(this))
+                }
+            }
+        }
+
         var router = new VueRouter({
             routes: [
                 {
@@ -144,7 +216,12 @@
                 {
                     path: '/users',
                     component: UserList
-                },{
+                },
+                {
+                    path: '/users/new',
+                    component: UserCreate
+                },
+                {
                     path: '/users/:userId',
                     component: UserDetail
                 }
