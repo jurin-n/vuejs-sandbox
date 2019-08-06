@@ -1,9 +1,21 @@
-### Vuexインストール
+# vuex-basic
+
+## Project setup
 ```
-npm install vuex
+npm install
 ```
 
-### 起動
+### Compiles and hot-reloads for development
 ```
-vue serve App.vue --open
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
 ```
