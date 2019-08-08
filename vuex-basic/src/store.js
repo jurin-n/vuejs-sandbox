@@ -17,7 +17,27 @@ const store = new Vuex.Store({
                 name: 'Vue.jsの本を買う',
                 done: false
             }
-        ]
+        ],
+        nextTaskId: 3
+    },
+    mutations: {
+        addTask (state, { name }){
+            state.tasks.push({
+                id: state.nextTaskId,
+                name: name,
+                done: false
+            })
+            state.nextTaskId++
+        },
+        toggleTaskStatus (state, { id }){
+            const filtered = state.tasks.filter(task => {
+                return task.id === id
+            })
+
+            filtered.forEach(task => {
+                task.done = !task.done
+            })
+        }
     }
 })
 
