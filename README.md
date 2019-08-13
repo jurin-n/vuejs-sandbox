@@ -17,3 +17,10 @@ vue create vuex-basic -d
 cd vuex-basic
 npm run serve
 ```
+
+
+
+
+npm install -g @vue/cli-init@3.0.1
+vue init webpack kanban-app
+
