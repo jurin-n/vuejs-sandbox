@@ -19,8 +19,13 @@ npm run serve
 ```
 
 
-
-
+### kanban-app
+#### セットアップ
+```
 npm install -g @vue/cli-init@3.0.1
 vue init webpack kanban-app
-
+```
+#### ESlintプラグイン導入
+```
+npm install --save-dev eslint-plugin-vue@4.7.1
+```

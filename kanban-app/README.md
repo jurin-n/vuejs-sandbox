@@ -5,6 +5,9 @@
 ## Build Setup
 
 ``` bash
+# run lint
+npm run lint
+
 # install dependencies
 npm install
 
