@@ -29,3 +29,7 @@ vue init webpack kanban-app
 ```
 npm install --save-dev eslint-plugin-vue@4.7.1
 ```
+#### バックエンドAPIサーバー環境導入
+```
+npm install --save-dev body-parser
+```
