@@ -33,3 +33,18 @@ npm install --save-dev eslint-plugin-vue@4.7.1
 ```
 npm install --save-dev body-parser
 ```
+
+#### 状態管理ライブラリの導入
+``` bash
+# インストール
+npm install --save vuex es6-promise
+
+# storeディレクトリ作成
+cd kanban-app
+mkdir -p src/store
+touch src/store/index.js
+touch src/store/mutation-types.js
+touch src/store/mutation.js
+touch src/store/getters.js
+touch src/store/actions.js
+```
