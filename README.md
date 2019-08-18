@@ -61,3 +61,11 @@ npm install --save axios
 mkdir -p src/api
 touch src/api/index.js
 ```
+
+#### 単体テストユーティリティの導入
+``` bash
+cd kanban-app
+
+# インストール
+npm install --save-dev @vue/test-utils@1.0.0-beta.24
+```
