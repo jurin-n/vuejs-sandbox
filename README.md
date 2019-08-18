@@ -69,3 +69,16 @@ cd kanban-app
 # インストール
 npm install --save-dev @vue/test-utils@1.0.0-beta.24
 ```
+
+#### E2Eテストのコマンド登録
+``` bash
+cd kanban-app
+
+# カスタムコマンド用のディレクトリ作成
+mkdir -p test/e2e/custom-commands
+
+# カスタムコマンド
+touch test/e2e/custom-commands/trigger.js # イベントをトリガー
+touch test/e2e/custom-commands/enterValue.js # input要素へのキーボード入力エミュレート
+```
+参考 https://nightwatchjs.org/guide/#writing-custom-commands
