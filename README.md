@@ -82,3 +82,15 @@ touch test/e2e/custom-commands/trigger.js # イベントをトリガー
 touch test/e2e/custom-commands/enterValue.js # input要素へのキーボード入力エミュレート
 ```
 参考 https://nightwatchjs.org/guide/#writing-custom-commands
+
+
+#### 単一ファイルコンポーネント化
+``` bash
+cd kanban-app
+
+mkdir -p src/components/{atoms,molecules,organisms,templates}
+touch src/components/atoms/Kbn{Button,Icon}.vue
+touch src/components/molecules/Kbn{LoginForm,BoardNavigation,TaskListHeader,TaskForm,TaskCard,TaskDetailForm}.vue
+touch src/components/organisms/Kbn{BoardTask,TaskList}.vue
+touch src/components/templates/Kbn{LoginView,BoardView,TaskDetailModal}.vue
+```
