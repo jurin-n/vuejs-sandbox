@@ -94,3 +94,7 @@ touch src/components/molecules/Kbn{LoginForm,BoardNavigation,TaskListHeader,Task
 touch src/components/organisms/Kbn{BoardTask,TaskList}.vue
 touch src/components/templates/Kbn{LoginView,BoardView,TaskDetailModal}.vue
 ```
+
+## JavaScript関連参考
+* [オブジェクト初期化子](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring)
+* [オブジェクトの分割代入](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
